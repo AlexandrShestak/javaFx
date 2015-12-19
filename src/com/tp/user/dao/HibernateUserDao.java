@@ -1,7 +1,7 @@
-package com.tp.dao;
+package com.tp.user.dao;
 
-import com.tp.HibernateUtil;
-import com.tp.entities.User;
+import com.tp.db.HibernateUtil;
+import com.tp.user.entity.User;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.hibernate.Session;
@@ -19,7 +19,7 @@ public class HibernateUserDao  {
         session.beginTransaction();
         session.save(user);
         session.getTransaction().commit();
-        return user.getLogin();
+        return user.getUsername();
     }
 
     public User get(String id) {
@@ -52,10 +52,31 @@ public class HibernateUserDao  {
     }
 
     public void update(User user) {
-        logger.debug("update user with username: "+user.getLogin() );
+        logger.debug("update user with username: "+user.getUsername() );
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
         session.update(user);
         session.getTransaction().commit();
+    }
+
+
+    /**
+     * return user entity by name
+     * @param name name of user entity
+     * @return user entity
+     */
+    public User getUserByName(String name) {
+        logger.debug("get user by name");
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
+        List<User> users =  session.createQuery("from User where username=?")
+                .setParameter(0,name)
+                .list();
+        if (users.size() == 0){
+            session.getTransaction().commit();
+            return null;
+        }
+        session.getTransaction().commit();
+        return users.get(0);
     }
 }

@@ -1,7 +1,7 @@
 package com.tp;
 
-import com.tp.dao.HibernateUserDao;
-import com.tp.entities.User;
+import com.tp.user.dao.HibernateUserDao;
+import com.tp.user.entity.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
@@ -25,7 +25,7 @@ public class Controller {
         String password = passwordTextField.getText();
         System.out.println(usernameTextField.getText());
         System.out.println(passwordTextField.getText());
-        User user = userDao.get(login);
+        User user = userDao.getUserByName(login);
         if (user == null) {
             messageText.setText("Incorrect username or password");
             return;

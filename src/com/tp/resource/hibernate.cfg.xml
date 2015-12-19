@@ -35,6 +35,7 @@
 
         <!--  <property name="hibernate.enable_lazy_load_no_trans">true</property>-->
 
-        <mapping class="com.tp.entities.User"/>
+        <mapping class="com.tp.user.entity.User"/>
+        <mapping class="com.tp.user.entity.Role"/>
     </session-factory>
 </hibernate-configuration>

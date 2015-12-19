@@ -1,4 +1,4 @@
-package com.tp;
+package com.tp.db;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;

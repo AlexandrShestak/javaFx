@@ -6,15 +6,59 @@
         xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
          http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
 
-    <changeSet id="2" author="alexandr">
+    <changeSet id="1" author="alexandr">
         <createTable tableName="users">
-            <column name="username" type="varchar(20)">
+            <column name="id" type="int" autoIncrement="true" incrementBy="1" startWith="1">
                 <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="username" type="varchar(20)">
+                <constraints nullable="false"/>
             </column>
             <column name="password" type="varchar(20)">
                 <constraints nullable="false"/>
             </column>
         </createTable>
+
+
+        <createTable tableName="roles">
+            <column name="id" type="int" autoIncrement="true" incrementBy="1" startWith="1">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="role" type="varchar(20)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <createTable tableName="user_roles">
+            <column name="id" type="int" autoIncrement="true" incrementBy="1" startWith="1">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <loadData catalogName="tp"
+                  encoding="UTF-8"
+                  file="src/com/tp//db/dbData/roles.csv"
+                  tableName="roles">
+            <column name="role" type="STRING"/>
+        </loadData>
+
+        <loadData catalogName="tp"
+                  encoding="UTF-8"
+                  file="src/com/tp//db/dbData/users.csv"
+                  tableName="users">
+        </loadData>
+
+        <loadData catalogName="tp"
+                  encoding="UTF-8"
+                  file="src/com/tp//db/dbData/user_roles.csv"
+                  tableName="user_roles">
+        </loadData>
     </changeSet>
 
 </databaseChangeLog>
