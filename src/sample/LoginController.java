@@ -15,7 +15,7 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.Set;
 
-public class Controller {
+public class LoginController {
 
     private HibernateUserDao userDao = new HibernateUserDao();
 
