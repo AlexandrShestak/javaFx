@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="2" author="alexandr">
+        <createTable tableName="courses">
+            <column name="id" type="int" autoIncrement="true" incrementBy="1" startWith="1">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(20)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <loadData catalogName="tp"
+                  encoding="UTF-8"
+                  file="src/com/tp//db/dbData/courses.csv"
+                  tableName="courses">
+        </loadData>
+
+        <createTable tableName="report_card_item">
+            <column name="id" type="int" autoIncrement="true" incrementBy="1" startWith="1">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="course_id" type="int" >
+                <constraints nullable="false"/>
+            </column>
+            <column name="report_card_id" type="int">
+                <constraints nullable="false"/>
+            </column>
+            <column name="mark" type="int" >
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <loadData catalogName="tp"
+                  encoding="UTF-8"
+                  file="src/com/tp//db/dbData/report_card_item.csv"
+                  tableName="report_card_item">
+        </loadData>
+
+        <createTable tableName="report_card">
+            <column name="id" type="int" autoIncrement="true" incrementBy="1" startWith="1">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_id" type="int" >
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <loadData catalogName="tp"
+                  encoding="UTF-8"
+                  file="src/com/tp//db/dbData/report_card.csv"
+                  tableName="report_card">
+        </loadData>
+
+    </changeSet>
+
+</databaseChangeLog>

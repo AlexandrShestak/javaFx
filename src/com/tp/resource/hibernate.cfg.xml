@@ -37,5 +37,8 @@
 
         <mapping class="com.tp.user.entity.User"/>
         <mapping class="com.tp.user.entity.Role"/>
+        <mapping class="com.tp.course.entity.Course"/>
+        <mapping class="com.tp.reportCard.entity.RepordCardItem"/>
+        <mapping class="com.tp.reportCard.entity.ReportCard"/>
     </session-factory>
 </hibernate-configuration>
