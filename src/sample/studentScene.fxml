@@ -28,5 +28,11 @@
       </Text>
       <Button mnemonicParsing="false" onAction="#viewReportCard" text="View report card" GridPane.rowIndex="1" />
       <Button mnemonicParsing="false" text="Register for cources" GridPane.rowIndex="2" />
+      <TableView fx:id="reportCardTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+        <columns>
+          <TableColumn fx:id="firstNameColumn" prefWidth="75.0" text="C1" />
+          <TableColumn fx:id="lastNameColumn" prefWidth="75.0" text="C2" />
+        </columns>
+      </TableView>
    </children>
 </GridPane>
