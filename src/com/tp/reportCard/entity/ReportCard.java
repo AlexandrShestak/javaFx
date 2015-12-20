@@ -1,6 +1,5 @@
 package com.tp.reportCard.entity;
 
-import com.tp.course.entity.Course;
 import com.tp.user.entity.User;
 
 import javax.persistence.*;
@@ -18,12 +17,12 @@ public class ReportCard {
     @Column(name = "id" , unique = true , nullable = false)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id", nullable = false , insertable = false , updatable = false)
     private User user;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "reportCard")
-    private Set<RepordCardItem> itemSet;
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "reportCard")
+    private Set<ReportCardItem> itemSet;
 
     public User getUser() {
         return user;
@@ -33,11 +32,11 @@ public class ReportCard {
         this.user = user;
     }
 
-    public Set<RepordCardItem> getItemSet() {
+    public Set<ReportCardItem> getItemSet() {
         return itemSet;
     }
 
-    public void setItemSet(Set<RepordCardItem> itemSet) {
+    public void setItemSet(Set<ReportCardItem> itemSet) {
         this.itemSet = itemSet;
     }
 

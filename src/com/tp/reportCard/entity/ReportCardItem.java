@@ -10,7 +10,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "report_card_item")
-public class RepordCardItem {
+public class ReportCardItem {
 
     @Id
     @GeneratedValue

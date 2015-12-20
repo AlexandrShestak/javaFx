@@ -1,14 +1,13 @@
 package sample;
 
 import com.tp.db.HibernateUtil;
-import com.tp.reportCard.entity.RepordCardItem;
+import com.tp.reportCard.dao.HibernateReportCardDao;
+import com.tp.reportCard.entity.ReportCardItem;
 import com.tp.reportCard.entity.ReportCard;
-import com.tp.user.entity.User;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -22,6 +21,8 @@ import java.util.List;
  * Created by shestakam on 19.12.2015.
  */
 public class StudentController {
+
+    private HibernateReportCardDao hibernatereportCardDao = new HibernateReportCardDao();
 
     @FXML
     private TableColumn<CourseMark, String> firstNameColumn;
@@ -49,8 +50,9 @@ public class StudentController {
                 .list();
         System.out.println(list);
         ReportCard reportCard = (ReportCard) list.get(0);
+        session.getTransaction().commit();
         System.out.println(reportCard.getItemSet());
-
+        ReportCard repordCard = hibernatereportCardDao.getreportCard("student");
       /*  TableColumn firstNameCol = new TableColumn("Course name");
         TableColumn lastNameCol = new TableColumn("Mark");
 
@@ -59,10 +61,10 @@ public class StudentController {
 
         ObservableList<CourseMark> data1 = FXCollections.observableArrayList();
 
-        for (RepordCardItem repordCardItem : reportCard.getItemSet()) {
+        for (ReportCardItem reportCardItem : reportCard.getItemSet()) {
             CourseMark temp = new CourseMark();
-            temp.courseName.setValue(repordCardItem.getCourse().getName());
-            temp.mark.setValue(Integer.toString(repordCardItem.getMark()));
+            temp.courseName.setValue(reportCardItem.getCourse().getName());
+            temp.mark.setValue(Integer.toString(reportCardItem.getMark()));
             data.add(temp);
             data1.add(temp);
 
@@ -70,7 +72,7 @@ public class StudentController {
         reportCardTable.setItems(data1);
         reportCardTable.refresh();
 
-        session.getTransaction().commit();
+
 
 
     }

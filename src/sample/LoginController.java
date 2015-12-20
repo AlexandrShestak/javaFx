@@ -55,6 +55,11 @@ public class LoginController {
             Parent root = FXMLLoader.load(getClass().getResource("studentScene.fxml"));
             stage.setScene(new Scene(root, 800, 400));
             return;
+        } else if (role.equals("ROLE_PROFESSOR")) {
+            Stage stage = (Stage) messageText.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("professorScene.fxml"));
+            stage.setScene(new Scene(root, 800, 400));
+            return;
         }
 
 
