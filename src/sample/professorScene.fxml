@@ -27,16 +27,6 @@
             </font>
         </Text>
         <Button fx:id="selectCourseToTeach" mnemonicParsing="false" onAction="#selectCourseToTeach" prefHeight="25.0" prefWidth="205.0" text="Select Course To Teach" textAlignment="RIGHT" GridPane.rowIndex="1" />
-        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="204.0" text="Submit Grades" GridPane.rowIndex="2" />
-      <TableView fx:id="coursesTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-        <columns>
-          <TableColumn fx:id="coursesTableColumn" prefWidth="199.0" text="Courses" />
-        </columns>
-      </TableView>
-      <TableView fx:id="professorCoursesTable" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
-        <columns>
-          <TableColumn fx:id="professorCoursesTableColumn" prefWidth="199.0" text="ProfessorCourses" />
-        </columns>
-      </TableView>
+        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="204.0" text="Submit Grades" GridPane.columnIndex="1" GridPane.rowIndex="1" />
     </children>
 </GridPane>
