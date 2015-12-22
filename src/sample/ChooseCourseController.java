@@ -6,7 +6,6 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -38,7 +37,7 @@ public class ChooseCourseController {
         // Initialize the person table with the two columns.
         ObservableList<StringProperty> allCoursesData = FXCollections.observableArrayList();
         for (Course course : hibernateCourseDao.getAll()) {
-            StringProperty property = new SimpleStringProperty("tralala");
+            StringProperty property = new SimpleStringProperty("");
             property.setValue(course.getName());
             allCoursesData.add(property);
         }
@@ -53,7 +52,7 @@ public class ChooseCourseController {
                     new FileReader("professorCourses");
             BufferedReader bufferedReader =
                     new BufferedReader(fileReader);
-            String line  = null;
+            String line;
             while((line = bufferedReader.readLine()) != null) {
                 professorCoursesData.add(new SimpleStringProperty(line));
             }
@@ -62,15 +61,12 @@ public class ChooseCourseController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         coursesTableColumn.setCellValueFactory(cellData -> cellData.getValue());
         professorCoursesTableColumn.setCellValueFactory(cellData -> cellData.getValue());
         coursesTable.setItems(allCoursesData);
         coursesTable.refresh();
         professorCoursesTable.setItems(professorCoursesData);
         professorCoursesTable.refresh();
-
-
     }
 
     public void addCourse() {
@@ -78,8 +74,6 @@ public class ChooseCourseController {
         dialog.setTitle("Add course dialog");
         dialog.setHeaderText("Add course dialog");
         dialog.setContentText("Please enter course name");
-
-        // Traditional way to get the response value.
         Optional<String> result = dialog.showAndWait();
         ObservableList items = professorCoursesTable.getItems();
         items.add(new SimpleStringProperty(result.get()));
@@ -92,10 +86,7 @@ public class ChooseCourseController {
         dialog.setTitle("Delete course dialog");
         dialog.setHeaderText("Delete course dialog");
         dialog.setContentText("Please enter course name");
-
-        // Traditional way to get the response value.
         Optional<String> result = dialog.showAndWait();
-
         ObservableList items = professorCoursesTable.getItems();
         items.remove(result.get());
         ObservableList<StringProperty> itemsAfterDelete = FXCollections.observableArrayList();
@@ -105,7 +96,6 @@ public class ChooseCourseController {
                 itemsAfterDelete.add(new SimpleStringProperty(((StringProperty) item).getValue()));
             }
         }
-
         professorCoursesTable.setItems(itemsAfterDelete);
         professorCoursesTable.refresh();
     }

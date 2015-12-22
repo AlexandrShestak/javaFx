@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class HibernateReportCardDao {
 
-    public ReportCard getreportCard(String name) {
+    public ReportCard getReportCard(String name) {
 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
