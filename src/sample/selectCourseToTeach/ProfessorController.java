@@ -1,4 +1,4 @@
-package sample;
+package sample.selectCourseToTeach;
 
 
 import javafx.fxml.FXML;

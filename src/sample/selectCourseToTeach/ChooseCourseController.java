@@ -1,4 +1,4 @@
-package sample;
+package sample.selectCourseToTeach;
 
 import com.tp.course.dao.HibernateCourseDao;
 import com.tp.course.entity.Course;

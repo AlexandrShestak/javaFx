@@ -33,4 +33,15 @@ public class Course {
 
         return id;
     }
+    public  int getProfessorCount() {
+        return 1;
+    }
+    public int getStudentCount() {
+        return 11;
+    }
+
+    public void close() {
+
+    }
+
 }

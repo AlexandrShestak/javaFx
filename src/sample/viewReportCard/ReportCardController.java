@@ -1,4 +1,4 @@
-package sample;
+package sample.viewReportCard;
 
 import com.tp.reportCard.dao.HibernateReportCardDao;
 import com.tp.reportCard.entity.ReportCardItem;

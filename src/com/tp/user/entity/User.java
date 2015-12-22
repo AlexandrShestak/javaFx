@@ -1,7 +1,10 @@
 package com.tp.user.entity;
 
+import com.tp.course.entity.Course;
+
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -86,5 +89,7 @@ public class User {
     public void setRoleSet(Set<Role> roleSet) {
         this.roleSet = roleSet;
     }
+
+
 
 }

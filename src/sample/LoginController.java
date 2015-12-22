@@ -11,7 +11,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.util.Set;
 
@@ -52,16 +51,19 @@ public class LoginController {
 
         if (role.equals("ROLE_STUDENT")) {
             Stage stage = (Stage) messageText.getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("studentScene.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("viewReportCard/studentScene.fxml"));
             stage.setScene(new Scene(root, 800, 400));
             return;
         } else if (role.equals("ROLE_PROFESSOR")) {
             Stage stage = (Stage) messageText.getScene().getWindow();
-            Parent root = FXMLLoader.load(getClass().getResource("professorScene.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("selectCourseToTeach/professorScene.fxml"));
+            stage.setScene(new Scene(root, 800, 400));
+            return;
+        } else  if (role.equals("ROLE_ADMIN")) {
+            Stage stage = (Stage) messageText.getScene().getWindow();
+            Parent root = FXMLLoader.load(getClass().getResource("closeRegistration/registrator.fxml"));
             stage.setScene(new Scene(root, 800, 400));
             return;
         }
-
-
     }
 }
